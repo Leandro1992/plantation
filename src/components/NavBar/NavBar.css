@@ -1,0 +1,16 @@
+.NavBar img {
+    margin-right: 10px;
+}
+
+.NavBar .navbar-title{
+    font-weight: 800;
+    color: white;
+}
+
+.NavBar .navbar {
+    background-color: forestgreen;
+}
+
+.NavBar {
+    margin-bottom: 50px;
+}

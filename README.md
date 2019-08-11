@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `new-component Home --type className --dir ./`
+
+This script will create a new scaffold component for you
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
