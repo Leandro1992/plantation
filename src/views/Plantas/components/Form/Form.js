@@ -9,7 +9,7 @@ class Form extends Component {
         <div className="field">
           <label className="label">ID</label>
           <div className="control">
-            <input className="input" name="id" value={this.props.form.id} onChange={this.props.onChange} type="text" placeholder="indentificador" />
+            <input className="input" name="id" value={this.props.form.id} onChange={this.props.onChange} type="number" placeholder="indentificador" />
           </div>
         </div>
         <div className="field">
