@@ -21,10 +21,10 @@ class NavBar extends Component {
           <div id="navbarExampleTransparentExample" className="navbar-menu">
             <div className="navbar-end">
               <a className="navbar-item" href="/home">Home</a>
-              <a className="navbar-item" href="https://bulma.io/">Projeto</a>
               <a className="navbar-item" href="/plantas">Plantas</a>
               <a className="navbar-item" href="/sensores">Sensores</a>
-              <a className="navbar-item" href="https://bulma.io/">Plantações</a>
+              <a className="navbar-item" href="https://bulma.io/">Projeto</a>
+              {/* <a className="navbar-item" href="https://bulma.io/">Plantações</a> */}
               <a className="navbar-item" href="https://bulma.io/">Configurações</a>
               {/* <a className="navbar-item" href="/home">
               <figure className="image is-32x32">
