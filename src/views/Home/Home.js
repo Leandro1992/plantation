@@ -3,6 +3,7 @@ import './Home.css';
 import NavBar from '../../components/NavBar/';
 import Box from './components/Box';
 import Sidebar from './components/Sidebar';
+import Map from './components/Map';
 
 class Home extends Component {
 
@@ -41,6 +42,11 @@ class Home extends Component {
                 <div className="column">
                   <Box name="Plantas Registradas" info="253" icon="fab fa-pagelines" type="notification is-success" />
                 </div>
+              </div>
+              <div className="columns">
+              <div className="column">
+                <Map />
+              </div>
               </div>
             </div>
           </div>
