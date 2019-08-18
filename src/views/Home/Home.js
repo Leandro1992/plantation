@@ -5,13 +5,29 @@ import Box from './components/Box';
 import Sidebar from './components/Sidebar';
 
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hortas: [
+        {id: 1, name: "Horta 1", local: "Horta 21", devices: [{id: 1, name: "Device 01", local: "Horta 21", model: "MCU"}]},
+        {id: 2, name: "Horta 2", local: "Horta 22", devices: [{id: 1, name: "Device 02", local: "Horta 22", model: "MCU"}]},
+        {id: 3, name: "Horta 3", local: "Horta 22", devices: [{id: 1, name: "Device 02", local: "Horta 22", model: "MCU"}]},
+        {id: 4, name: "Horta 4", local: "Horta 22", devices: [{id: 1, name: "Device 02", local: "Horta 22", model: "MCU"}]},
+        {id: 5, name: "Horta 5", local: "Horta 22", devices: [{id: 1, name: "Device 02", local: "Horta 22", model: "MCU"}]},
+        {id: 6, name: "Horta 6", local: "Horta 22", devices: [{id: 1, name: "Device 02", local: "Horta 22", model: "MCU"}]}
+      ]
+    };
+  }
+
   render() {
     return (
       <div>
         <NavBar name="Home" />
         <div className="columns">
           <div className="column">
-            <Sidebar />
+            <Sidebar hortas={this.state.hortas} />
           </div>
           <div className="column is-four-fifths">
             <div className="Home">
