@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import './Login.css';
+import axios from 'axios';
 
 class Login extends Component {
 
   login(){
-    window.location.href = "/home";
+    axios.post('http://localhost:3001/login', {
+      user: 'Fred',
+      password: 'Flintstone'
+    }).then(function (response) {
+      if(response.data.success){
+        window.location.href = "/home";
+      }else{
+        alert("Credenciais inválidas")
+      }
+    }).catch(err => alert("Erro", err));
   }
 
   render() {

@@ -6,9 +6,12 @@ class Login {
     }
 
     startRoutes(app) {
-        app.get('/login', (req, res) => {
-            console.log("bateu aqui!")
-            res.send('Hello from Login!')
+        app.post('/login', (req, res) => {
+            if(req.body.user && req.body.password){
+                res.send({info: "Success Login", success: true});
+            }else{
+                res.status(404).send({info: "Missing data"})
+            }
         })
     }
 }

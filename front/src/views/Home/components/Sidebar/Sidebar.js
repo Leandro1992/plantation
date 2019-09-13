@@ -11,20 +11,10 @@ class Sidebar extends Component {
     };
 
     this.filterList = this.filterList.bind(this);
-    this.setActiveDropdown = this.setActiveDropdown.bind(this);
   }
 
   componentWillMount() {
     this.setState({ items: this.props.hortas })
-  }
-
-  setActiveDropdown(ev) {
-    console.log("ta chegando?")
-    if (ev.currentTarget.classList.contains("is-active")) {
-      ev.currentTarget.classList.remove("is-active");
-    } else {
-      ev.currentTarget.classList.add("is-active");
-    }
   }
 
   filterList(event) {
@@ -41,35 +31,8 @@ class Sidebar extends Component {
     let hortas = this.state.items.map(horta => {
       return (
         <li key={horta.id}>
-          <a onClick={(ev) => this.setActiveDropdown(ev)} className="is-active">{horta.name}</a>
-          <ul>
-            {horta.devices.map(device => {
-              return (
-                <li key={device.id}>{device.name}</li>
-              )
-            })}
-          </ul>
+          <a className="is-active">{horta.name}</a>
         </li>
-        // <div key={horta.id} onClick={(ev) => this.setActiveDropdown('horta'+horta.id, ev)} id={'horta'+horta.id} className="dropdown">
-        //   <div className="dropdown-trigger menu-dropdown">
-        //     <button className="button menu-but
-        ton" aria-haspopup="true" aria-controls="dropdown-menu">
-        //       <span>{horta.name}</span>
-        //       <span className="icon is-small">
-        //         <i className="fas fa-angle-down" aria-hidden="true"></i>
-        //       </span>
-        //     </button>
-        //   </div>
-        //   <div className="dropdown-menu" id="dropdown-menu" role="menu">
-        //     <div className="dropdown-content">
-        //     {horta.devices.map(device => {
-        //       return (
-        //         <div key={device.id} className="dropdown-item">{device.name}</div>
-        //       )
-        //     })}
-        //     </div>
-        //   </div>
-        // </div>
       )
     })
 

@@ -3,7 +3,6 @@ import './Home.css';
 import NavBar from '../../components/NavBar/';
 import Box from './components/Box';
 import Sidebar from './components/Sidebar';
-import Map from './components/Map';
 
 class Home extends Component {
 
@@ -13,11 +12,6 @@ class Home extends Component {
     this.state = {
       hortas: [
         {id: 1, name: "Horta 1", local: "Horta 21", devices: [{id: 1, name: "Device 01", local: "Horta 21", model: "MCU"}], isActive: true},
-        {id: 2, name: "Horta 2", local: "Horta 22", devices: [{id: 1, name: "Device 02", local: "Horta 22", model: "MCU"}], isActive: false},
-        {id: 3, name: "Horta 3", local: "Horta 22", devices: [{id: 1, name: "Device 03", local: "Horta 22", model: "MCU"}], isActive: false},
-        {id: 4, name: "Horta 4", local: "Horta 22", devices: [{id: 1, name: "Device 04", local: "Horta 22", model: "MCU"}], isActive: false},
-        {id: 5, name: "Horta 5", local: "Horta 22", devices: [{id: 1, name: "Device 05", local: "Horta 22", model: "MCU"}], isActive: false},
-        {id: 6, name: "Horta 6", local: "Horta 22", devices: [{id: 1, name: "Device 06", local: "Horta 22", model: "MCU"}], isActive: false}
       ]
     };
   }
@@ -45,7 +39,7 @@ class Home extends Component {
               </div>
               <div className="columns">
               <div className="column">
-                <Map />
+                Aqui vai aparecer os dados da horta quando clicar
               </div>
               </div>
             </div>
