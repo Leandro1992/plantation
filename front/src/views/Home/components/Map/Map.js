@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import './Map.css';
+import DnD from '../DnD';
 
 class Map extends Component {
   render() {
     return (
-      <div>Mapa</div>
+      <div>
+        <DnD></DnD>
+      </div>
     );
   }
 }

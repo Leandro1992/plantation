@@ -8,7 +8,7 @@
     height: 100vh;
 }
 
-.Sidebar .menu-tltle{
+/* .Sidebar .menu-tltle{
     border-bottom: 1px solid lightgray;
     padding: 20px;
     margin-bottom: 0px;
@@ -18,3 +18,19 @@
     padding: 25px;
     border-bottom: 1px solid lightgray;
 }
+
+.Sidebar .menu-button{
+    width: 100%;
+}
+
+.Sidebar .menu-dropdown{
+    width: 100%;
+}
+
+.Sidebar .dropdown{
+    width: 100%;
+}
+
+.Sidebar .dropdown-menu{
+    width: 100%;
+} */
