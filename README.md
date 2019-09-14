@@ -1,2 +1,2 @@
-# stock-admin-back
+# Home garden project
 
