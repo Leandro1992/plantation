@@ -4,9 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `new-component Home --type className --dir ./`
+### `rg component Garden -d ./src\components`
 
-This script will create a new scaffold component for you
+This script will create a new scaffold component for you based on (https://www.npmjs.com/package/reactjs-component-generator)
 
 ### `npm start`
 

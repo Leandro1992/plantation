@@ -3,29 +3,14 @@
 
 /* Login */
 
-.Login {
-    width: 400px;
-    height: 400px;
-    padding: 30px;
-    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("./plantation.jpg");
-    box-shadow: inset 0 0 5px 2px #282a2d;
-    border-radius: 240px;
-    box-shadow: inset 0 0 5px 2px #282a2d;
-    margin: 70px auto;
-    font-weight: bold;
+.Login .logo{
+    position: absolute;
+    top: 20px;
+    left: 50px;
 }
 
-.Login .user-login {
-    margin-top: 20px;
-}
-
-.Login .button-login {
-    margin: 30px 40%;
-}
-
-.Login h1 {
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 50px;
-    text-align: center;
+.hero.is-primary {
+    background-image: url("./fundo.jpg"); 
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(50%);
 }

@@ -6,10 +6,10 @@ class NavBar extends Component {
   render() {
     return (
       <div className="NavBar">
-        <nav className="navbar is-success">
+        <nav className="navbar">
           <div className="navbar-brand">
             <a className="navbar-item" href="/home">
-              <p className="navbar-title">Plantation Control</p>
+              <p className="navbar-title">Home Garden</p>
             </a>
             <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
               <span></span>

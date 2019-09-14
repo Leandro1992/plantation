@@ -1,11 +1,19 @@
 .Sidebar {
-    background-color: ivory;
+    margin-top: 20px;
 }
 
 .Sidebar .menu {
     text-align: center;
     border: 1px solid lightgray;
-    height: 100vh;
+    border-radius: 5px;
+    padding: 25px;
+    height: 87vh;
+}
+
+.Sidebar .garden-list {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: yellowgreen !important;
 }
 
 /* .Sidebar .menu-tltle{

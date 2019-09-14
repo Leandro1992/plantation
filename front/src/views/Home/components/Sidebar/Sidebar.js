@@ -13,6 +13,10 @@ class Sidebar extends Component {
     this.filterList = this.filterList.bind(this);
   }
 
+  showDataGarden(id){
+    console.log(id, "aehooo")
+  }
+
   componentWillMount() {
     this.setState({ items: this.props.hortas })
   }
@@ -31,7 +35,7 @@ class Sidebar extends Component {
     let hortas = this.state.items.map(horta => {
       return (
         <li key={horta.id}>
-          <a className="is-active">{horta.name}</a>
+          <a onClick={() => this.showDataGarden(horta.id)} className="is-active garden-list">{horta.name}</a>
         </li>
       )
     })
@@ -39,7 +43,7 @@ class Sidebar extends Component {
     return (
       <div className="Sidebar">
         <aside className="menu">
-          <h4 className="title menu-tltle">Hortas</h4>
+          <h4 className="title menu-tltle">Gardens</h4>
           <div className="field input-find">
             <p className="control has-icons-left">
               <input className="input" type="text" onChange={this.filterList} placeholder="Filtrar Hortas" />

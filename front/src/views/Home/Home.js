@@ -12,6 +12,8 @@ class Home extends Component {
     this.state = {
       hortas: [
         {id: 1, name: "Horta 1", local: "Horta 21", devices: [{id: 1, name: "Device 01", local: "Horta 21", model: "MCU"}], isActive: true},
+        {id: 2, name: "Horta 2", local: "Horta 21", devices: [{id: 1, name: "Device 01", local: "Horta 21", model: "MCU"}], isActive: true},
+        {id: 3, name: "Horta 3", local: "Horta 21", devices: [{id: 1, name: "Device 01", local: "Horta 21", model: "MCU"}], isActive: true},
       ]
     };
   }
@@ -28,13 +30,13 @@ class Home extends Component {
             <div className="Home">
               <div className="columns">
                 <div className="column">
-                  <Box name="Plantações Ativas" info="7/10" icon="fas fa-leaf is-large" type="notification is-danger" />
+                  <Box name="Eventos registrados" info="29" icon="fas fa-bell is-large" type="notification is-danger" />
                 </div>
                 <div className="column">
-                  <Box name="Sensores Ativos" info="50/74" icon="fas fa-microchip" type="notification is-info" />
+                  <Box name="Sensores Cadastrados" info="3" icon="fas fa-microchip" type="notification is-info" />
                 </div>
                 <div className="column">
-                  <Box name="Plantas Registradas" info="253" icon="fab fa-pagelines" type="notification is-success" />
+                  <Box name="Hortas Cadastradas" info="3" icon="fab fa-pagelines" type="notification is-success" />
                 </div>
               </div>
               <div className="columns">
