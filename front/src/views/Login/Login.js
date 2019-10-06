@@ -6,7 +6,7 @@ const logo = require('./logo.png');
 class Login extends Component {
 
   login() {
-    axios.post('http://localhost:3001/login', {
+    axios.post('http://localhost:3000/login', {
       user: 'Fred',
       password: 'Flintstone'
     }).then(function (response) {

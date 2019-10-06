@@ -7,6 +7,7 @@ class Login {
 
     startRoutes(app) {
         app.post('/login', (req, res) => {
+            console.log('cheguei aquiii', req.body)
             if(req.body.user && req.body.password){
                 res.send({info: "Success Login", success: true});
             }else{
