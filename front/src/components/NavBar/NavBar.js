@@ -21,6 +21,7 @@ class NavBar extends Component {
           <div id="navbarExampleTransparentExample" className="navbar-menu">
             <div className="navbar-end">
               <a className="navbar-item" href="/home">Home</a>
+              <a className="navbar-item" href="/hortas">Hortas</a>
               <a className="navbar-item" href="/plantas">Plantas</a>
               <a className="navbar-item" href="/sensores">Sensores</a>
               <a className="navbar-item" href="https://bulma.io/">Projeto</a>
