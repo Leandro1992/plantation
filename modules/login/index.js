@@ -8,11 +8,14 @@ class Login {
     startRoutes(app) {
         app.post('/login', (req, res) => {
             console.log('cheguei aquiii', req.body)
-            if(req.body.user && req.body.password){
-                res.send({info: "Success Login", success: true});
-            }else{
-                res.status(404).send({info: "Missing data"})
-            }
+            models.conta.findOne({login: req.body.user, senha: req.body.senha}).then(result => {
+                console.log(result);
+                if(result){
+                    res.send({info: result, success: true});
+                }else{
+                    res.send({info: 'Erro ao fazer login', success: false});
+                }
+            }).catch(err => res.status(403).send(err));
         })
     }
 }

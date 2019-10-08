@@ -5,18 +5,38 @@ const logo = require('./logo.png');
 
 class Login extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: '',
+      senha: ''
+    };
+
+    this.login = this.login.bind(this);
+  }
+
+  handleChangeUser = (e) =>{ 
+    this.setState({user: e.target.value});
+  }
+
+  handleChangeSenha = (e) =>{ 
+    this.setState({senha: e.target.value});
+  }
+
   login() {
-    axios.post('http://localhost:3000/login', {
-      user: 'Fred',
-      password: 'Flintstone'
-    }).then(function (response) {
-      console.log("ta chegando?", response)
-      if (response.data.success) {
-        window.location.href = "/home";
-      } else {
-        alert("Credenciais inválidas")
-      }
-    }).catch(err => alert("Erro", err));
+    if (this.state.user && this.state.senha) {
+      axios.post('http://localhost:3000/login', this.state).then(function (response) {
+        console.log("ta chegando?", response)
+        if (response.data.success) {
+          window.location.href = "/home";
+        } else {
+          alert("Credenciais inválidas")
+        }
+      }).catch(err => alert("Erro", err));
+    } else {
+      alert("Credenciais inválidas")
+    }
   }
 
   render() {
@@ -25,7 +45,7 @@ class Login extends Component {
         <section className="hero is-primary is-fullheight">
           <div className="hero-body">
             <div className="logo">
-              <img alt="logo" src={logo}/>
+              <img alt="logo" src={logo} />
             </div>
             <div className="container">
               <div className="columns is-centered">
@@ -34,7 +54,7 @@ class Login extends Component {
                     <div className="field">
                       <label className="label">Login</label>
                       <div className="control has-icons-left">
-                        <input type="email" placeholder="e.g. bobsmith@gmail.com" className="input" required />
+                        <input type="text" placeholder="e.g. bobsmith@gmail.com" onChange={this.handleChangeUser} value={this.state.user} className="input" required />
                         <span className="icon is-small is-left">
                           <i className="fa fa-envelope"></i>
                         </span>
@@ -43,7 +63,7 @@ class Login extends Component {
                     <div className="field">
                       <label className="label">Senha</label>
                       <div className="control has-icons-left">
-                        <input type="password" placeholder="*******" className="input" required />
+                        <input type="password" placeholder="*******" value={this.state.senha} onChange={this.handleChangeSenha} className="input" required />
                         <span className="icon is-small is-left">
                           <i className="fa fa-lock"></i>
                         </span>
