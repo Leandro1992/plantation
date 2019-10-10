@@ -35,7 +35,7 @@ class Sidebar extends Component {
     let hortas = this.state.items.map(horta => {
       return (
         <li key={horta.id}>
-          <a onClick={() => this.showDataGarden(horta.id)} className="is-active garden-list">{horta.name}</a>
+          <span onClick={() => this.showDataGarden(horta.id)} className="is-active garden-list">{horta.name}</span>
         </li>
       )
     })

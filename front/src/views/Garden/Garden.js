@@ -12,27 +12,24 @@ class Garden extends Component {
     super(props);
 
     this.state = {
-      hortas: [{
-        id: 1, name: "Horta 1", data_fim: '2019-12-05'
-      }],
+      hortas: [],
       form: { id: "", name: "" }
     };
 
+    this.user = JSON.parse(localStorage.getItem('id_user'))
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
   }
 
-  componentDidMount() {
+  getAllHortas() {
     let me = this;
     axios.get('http://localhost:3000/buscaHortas').then(function (response) {
-      console.log("ta chegando?", response)
       if (response.data.success) {
-        let hortas  = response.data.info.map(el => {
-          return {id: el._id, name: el.nome, data_fim: el.created_at}
+        let hortas = response.data.info.map(el => {
+          return { id: el._id, name: el.nome, data_fim: el.created_at }
         })
-        console.log(hortas)
         me.setState({
           hortas: hortas
         });
@@ -42,6 +39,10 @@ class Garden extends Component {
     }).catch(err => {
       console.log(err)
     });
+  }
+
+  componentDidMount() {
+    this.getAllHortas();
   }
 
   handleInputChange(e) {
@@ -74,15 +75,27 @@ class Garden extends Component {
 
   handleSubmit() {
     //TODO INSERT ON DATABASE AND GET CALLBACK
-    let newHortas = this.state.hortas;
-    const updatedHortas = newHortas.filter(item => item.id !== this.state.form.id);
-    this.setState(prevState => ({
-      hortas: [...updatedHortas, this.state.form]
-    }))
-
-    this.setState({
-      form: { id: "", name: "" }
-    });
+    if (this.state.form.name) {
+      let me = this;
+      let data = {
+        _id: this.state.form.id === "" ? null : this.state.form.id,
+        nome: this.state.form.name,
+        conta: this.user._id
+      };
+      axios.post('http://localhost:3000/createOrUpdateHorta', data).then(function (response) {
+        console.log("ta chegando?", response)
+        if (response.data.success) {
+          me.getAllHortas();
+          me.setState({
+            form: { id: "", name: "" }
+          });
+        } else {
+          alert("Credenciais inválidas")
+        }
+      }).catch(err => {
+        console.log(err.response)
+      });
+    }
   }
 
   render() {

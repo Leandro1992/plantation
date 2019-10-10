@@ -29,6 +29,7 @@ class Login extends Component {
       axios.post('http://localhost:3000/login', this.state).then(function (response) {
         console.log("ta chegando?", response)
         if (response.data.success) {
+          localStorage.setItem('id_user', JSON.stringify(response.data.info));
           window.location.href = "/home";
         } else {
           alert("Credenciais inválidas")
