@@ -6,11 +6,9 @@ class Table extends Component {
 
     let listSensors = this.props.sensors.map(sensor => {
       return (
-        <tr key={sensor.id}>
-          <td>{sensor.id}</td>
-          <td>{sensor.name}</td>
-          <td>{sensor.local}</td>
-          <td>{sensor.model}</td>
+        <tr key={sensor.token}>
+          <td>{sensor.nome}</td>
+          <td>{sensor.token}</td>
           <td>
             <button onClick={() => {this.props.handleEdit(sensor)}} className="button is-warning is-outlined">
               <span className="icon is-small">
@@ -30,15 +28,13 @@ class Table extends Component {
     })
 
     return (
-      <div>
-        <h2 className="title">Catálogo de Sensores</h2>
+      <div className="Table">
+        <h2 className="title">Sensores</h2>
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Nome</th>
-              <th>Local do Sensor</th>
-              <th>Modelo</th>
+              <th>Token</th>
               <th>Editar</th>
               <th>Excluir</th>
             </tr>

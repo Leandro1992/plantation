@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/';
 import Table from './components/Table';
 import Form from './components/Form';
 import axios from 'axios';
+import SweetAlert from 'sweetalert2-react';
 
 
 class Garden extends Component {
@@ -13,7 +14,8 @@ class Garden extends Component {
 
     this.state = {
       hortas: [],
-      form: { id: "", name: "" }
+      form: { id: "", name: "" },
+      showEditModel: false
     };
 
     this.user = JSON.parse(localStorage.getItem('id_user'))
@@ -61,16 +63,28 @@ class Garden extends Component {
     });
   }
 
-  handleRemove(data) {
-    let newHortas = this.state.hortas;
-    const updatedHortas = newHortas.filter(item => item.id !== data.id);
-    this.setState({
-      hortas: updatedHortas
-    });
+  removeData(){
+    let me = this;
+    axios.post('http://localhost:3000/removeHortas', this.state.form).then(function (response) {
+        console.log("ta chegando?", response)
+        if (response.data.success) {
+          me.getAllHortas();
+          me.setState({
+            form: { id: "", name: "" }, showEditModel: false
+          });
+        } else {
+          me.setState({
+            form: { id: "", name: "" }, showEditModel: false
+          });
+        }
+      }).catch(err => {
+        console.log(err.response)
+      });
+  }
 
-    this.setState({
-      form: { id: "", name: "" }
-    });
+  handleRemove(data) {
+    console.log(data)
+    this.setState({ showEditModel: true, form: data });
   }
 
   handleSubmit() {
@@ -103,6 +117,16 @@ class Garden extends Component {
       <div>
         <NavBar name="Hortas" />
         <div className="Hortas container">
+          <SweetAlert
+            show={this.state.showEditModel}
+            title="Remover Horta"
+            type="warning"
+            text="Você deseja realmente remover esse item?"
+            showCancelButton = "true"
+            confirmButtonText = "Sim, Remover!"
+            cancelButtonText = "Cancelar"
+            onConfirm={() => this.removeData()}
+          />
           <div className="columns">
             <div className="column">
               <Form form={this.state.form} onChange={this.handleInputChange} onSubmit={this.handleSubmit} />

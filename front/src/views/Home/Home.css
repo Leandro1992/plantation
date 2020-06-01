@@ -6,3 +6,27 @@
 .Home .notification{
     text-align: center;
 }
+
+.Home .chart-title{
+    display: flex;
+    width: 100%;
+    justify-content: center; 
+    font-size: larger;
+    font-weight: 700;
+}
+
+.Home .enviroment-char {
+    height: 280px;
+    margin-bottom: 25px;
+    border: 2px solid lightgray;
+    margin: 13px;
+}
+
+.empty-title {
+    font-size: x-large;
+    font-weight: 800;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

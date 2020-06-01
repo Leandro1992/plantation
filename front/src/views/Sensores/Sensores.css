@@ -1,3 +1,13 @@
 .Sensores {
     margin-top: 50px;
 }
+.Sensores .title {
+    font-size: 1.5rem;
+}
+
+.Sensores .sensor {
+    border: 2px solid lightgray;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}

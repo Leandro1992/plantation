@@ -3,6 +3,8 @@ import './Sensores.css';
 import NavBar from '../../components/NavBar/';
 import Table from './components/Table';
 import Form from './components/Form';
+import Adopt from './components/Adopt';
+import axios from 'axios';
 
 class Sensores extends Component {
 
@@ -10,17 +12,23 @@ class Sensores extends Component {
     super(props);
 
     this.state = {
-      sensors: [{
-        id: 1, name: "Device 01", local: "Horta 21", model: "MCU"
-      }],
-      form: { id: "", name: "", local: "", model: "" }
+      sensors: [],
+      sensorsToAdopt: [],
+      form: { nome: "", token: "" },
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
   }
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/getSensors').then(response => {
+      this.setState({ sensors: response.data.data ? response.data.data: []});
+      this.setState({ sensorsToAdopt: response.data.adopt });
+    }).catch(err => console.log(err));
+  }
+
 
   handleInputChange(e) {
     let newForm = { ...this.state.form }
@@ -33,16 +41,19 @@ class Sensores extends Component {
 
   handleSubmit() {
     //TODO INSERT ON DATABASE AND GET CALLBACK
-    let newSensors = this.state.sensors;
-    const updatedSensors = newSensors.filter(item => item.id !== parseInt(this.state.form.id));
-
-    this.setState(prevState => ({
-      sensors: [...updatedSensors, this.state.form]
-    }))
-    
-    this.setState({
-      form: { id: "", name: "", local: "", model: "" }
-    });
+    console.log(this.state.form)
+    axios.post('http://localhost:3000/createOrUpdateSensor', this.state.form).then(response => {
+      let newSensors = this.state.sensors;
+      console.log(response, newSensors)
+      const updatedSensors = newSensors.filter(item => item._id !== response.data.data._id);
+      this.setState(prevState => ({
+        sensors: [...updatedSensors, response.data.data]
+      }))
+      this.setState({
+        form: { nome: "", token: "" },
+        sensorsToAdopt: []
+      });
+    }).catch(err => console.log(err));
   }
 
   handleEdit(data) {
@@ -60,7 +71,7 @@ class Sensores extends Component {
     });
 
     this.setState({
-      form: { id: "", name: "", local: "", model: "" }
+      form: { nome: "", token: "" }
     });
   }
 
@@ -70,11 +81,14 @@ class Sensores extends Component {
         <NavBar name="Sensores" />
         <div className="Sensores container">
           <div className="columns">
-            <div className="column">
+            <div className="column sensor">
               <Form form={this.state.form} onChange={this.handleInputChange} onSubmit={this.handleSubmit} />
             </div>
-            <div className="column">
+            <div className="column sensor">
               <Table sensors={this.state.sensors} handleEdit={this.handleEdit} handleRemove={this.handleRemove} />
+            </div>
+            <div className="column sensor">
+              <Adopt sensors={this.state.sensorsToAdopt ? this.state.sensorsToAdopt : []} handleAdopt={this.handleEdit} />
             </div>
           </div>
         </div>

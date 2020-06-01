@@ -13,7 +13,30 @@
 .Sidebar .garden-list {
     margin-bottom: 5px;
     border-radius: 5px;
-    background-color: yellowgreen !important;
+}
+
+.Sidebar .menu-list {
+    border: 1px solid lightgray;
+}
+
+.Sidebar .menu-list .menu-list-li {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Sidebar .menu-list .menu-list-li:hover {
+    background-color: yellowgreen;
+    color: white;
+}
+
+.Sidebar .menu-list .active {
+    background-color: yellowgreen;
+    color: white;
 }
 
 /* .Sidebar .menu-tltle{
